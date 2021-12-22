@@ -16,9 +16,10 @@
 <div class="playerhand">
 	<img id="image" src="image/player1.png">
 </div>
-<div class="opponenthand">
+<canvas id="canvas" width="500" height="500"></canvas>
+//<div class="opponenthand">
 	<img src="image/opponent1.png" style="display:none;" id="opponentimg">
-</div>
+//</div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
@@ -93,10 +94,18 @@
 
     async function jankenstart(){
     	//ボタンが押されてじゃんけんがスタートしたら、今の手に対して負ける手を出す
+    	const canvas = document.getElementById("canvas");
+    	let ctx = canvas.getContext("2d");
     	let opponentimg = document.getElementById("opponentimg");
-    	let opponentpictureadress;
-    	opponentimg.style = "";
-
+    	let opponentpictureadress = 0;
+    	for (var i = 0; i >= 12; i++) {
+    		if (opponentpictureadress >=3) {
+    			opponentpictureadress = 1;
+    		}else{
+    			opponentpictureadress ++;
+    		}
+    	ctx.drawImage(opponentimg,100,100,300,300);
+    	}
     	if (labelContainer.childNodes[0].innerHTML == "グー") {
     		opponentpictureadress = 2;
     	}else if (labelContainer.childNodes[0].innerHTML == "チョキ") {
@@ -104,6 +113,7 @@
     	}else if (labelContainer.childNodes[0].innerHTML == "パー") {
     		opponentpictureadress = 1;
     	}
+    	ctx.drawImage(opponentimg,100,100,300,300);
     }
 </script>
 
