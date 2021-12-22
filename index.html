@@ -99,12 +99,7 @@
     	let opponentimg = document.getElementById("opponentimg");
     	let opponentpictureadress = 0;
     	for (var i = 0; i >= 12; i++) {
-    		if (opponentpictureadress >=3) {
-    			opponentpictureadress = 1;
-    		}else{
-    			opponentpictureadress ++;
-    		}
-    	ctx.drawImage(opponentimg,100,100,300,300);
+    		setTimeout(jankenrole,200);
     	}
     	if (labelContainer.childNodes[0].innerHTML == "グー") {
     		opponentpictureadress = 2;
@@ -112,6 +107,15 @@
     		opponentpictureadress = 3;
     	}else if (labelContainer.childNodes[0].innerHTML == "パー") {
     		opponentpictureadress = 1;
+    	}
+    	ctx.drawImage(opponentimg,100,100,300,300);
+    }
+
+    async function jankenrole(){
+    	if (opponentpictureadress >=3) {
+    		opponentpictureadress = 1;
+    	}else{
+    		opponentpictureadress ++;
     	}
     	ctx.drawImage(opponentimg,100,100,300,300);
     }
