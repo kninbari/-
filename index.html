@@ -108,6 +108,7 @@
     	}else if (labelContainer.childNodes[0].innerHTML == "パー") {
     		opponentpictureadress = 1;
     	}
+    	opponentimg.src = "image/opponent"+opponentpictureadress+".png";
     	ctx.drawImage(opponentimg,100,100,300,300);
     }
 
@@ -117,6 +118,7 @@
     	}else{
     		opponentpictureadress ++;
     	}
+    	opponentimg.src = "image/opponent"+opponentpictureadress+".png";
     	ctx.drawImage(opponentimg,100,100,300,300);
     }
 </script>
