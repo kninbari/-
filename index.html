@@ -7,8 +7,8 @@
 </head>
 
 <body>
-	
-<div>Teachable Machine Image Model</div>
+
+<div>じゃんけん</div>
 <button type="button" onclick="init()">Start</button>
 <div id="webcam-container"></div>
 <div id="label-container"></div>
@@ -61,9 +61,16 @@
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
         for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
+        	if(prediction[0].probability > prediction[1].probability && prediction[0].probability > prediction[2].probability){
+        		labelContainer.childNodes[0].innerHTML = "グー"
+        	}else if(prediction[1].probability > prediction[0].probability && prediction[1].probability > prediction[2].probability){
+        		labelContainer.childNodes[0].innerHTML = "チョキ"
+        	}else if(prediction[2].probability > prediction[0].probability && prediction[2].probability > prediction[1].probability){
+        		labelContainer.childNodes[0].innerHTML = "パー"
+        	}
+            /*const classPrediction =
                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
+            labelContainer.childNodes[i].innerHTML = classPrediction;*/
         }
     }
 </script>
