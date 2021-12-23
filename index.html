@@ -12,6 +12,10 @@
 <button type="button" onclick="init()">Start</button>
 <div id="webcam-container"></div>
 <button type="2button" onclick="jankenstart()">じゃんけんスタート</button>
+<audio id="dramrole" preload="auto">
+	<source src="ドラムロールの音.mp3" type="audio/mp3">
+    <source src="ドラムロールの音.wav" type="audio/wav">
+</audio>
 <div class="playerhand">
 	<img id="image" src="image/player1.png" width="200" height="200">
 </div>
@@ -106,7 +110,9 @@
     	opponenthand.appendChild(opponentimg);
     	
     	opponentimg.src = "image/opponent1.png";
-    	for (var i = 0; i <= 12; i++) {
+
+    	document.getElementById("dramrole");
+    	for (var i = 0; i <= 20; i++) {
     		//setTimeout(jankenrole,200);
     		
     		//ctx.clearRect(90,90,300,300);
@@ -126,9 +132,12 @@
     		//opponentimg.onload = function{
     		//	ctx.drawImage(opponentimg,100,100,200,200);
     		//}
-    		await sleep(200);
+    		await sleep(100);
     	}
-    	await sleep(1500);
+    	opponenthand.removeChild(opponentimg);
+    	opponentimg = document.createElement('img');
+    	opponentimg.setAttribute("id","opponentimg");
+    	await sleep(1000);
     	//ctx.clearRect(90,90,300,300);
     	if (labelContainer.childNodes[0].innerHTML == "グー") {
     		opponentpictureadress = 2;
@@ -138,6 +147,7 @@
     		opponentpictureadress = 1;
     	}
     	opponentimg.src = "image/opponent"+opponentpictureadress+".png";
+    	opponenthand.appendChild(opponentimg);
     	//opponentimg.onload = function{
     	//	ctx.drawImage(opponentimg,100,100,200,200);
     	//}
