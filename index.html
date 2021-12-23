@@ -101,7 +101,7 @@
     	//let opponentimg = document.getElementById("opponentimg");
     	let opponentpictureadress = 0;
     	var opponenthand = document.getElementById('opponenthand');
-    	var opponentimg = opponenthand.createElement('img');
+    	var opponentimg = document.createElement('img');
     	opponentimg.setAttribute("id","opponentimg");
     	opponenthand.appendChild(opponentimg);
     	
@@ -111,7 +111,7 @@
     		
     		//ctx.clearRect(90,90,300,300);
     		opponenthand.removeChild(opponentimg);
-    		opponentimg = opponenthand.createElement('img');
+    		opponentimg = document.createElement('img');
     		opponentimg.setAttribute("id","opponentimg");
 
 
