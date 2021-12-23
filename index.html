@@ -103,14 +103,14 @@
     	//for (var i = 0; i >= 12; i++) {
     		//setTimeout(jankenrole,200);
     		
-    		await ctx.clearRect(90,90,310,310);
-    		if (opponentpictureadress >=3) {
-    		opponentpictureadress = 1;
-    		}else{
+		await ctx.clearRect(90,90,310,310);
+		if (opponentpictureadress >=3) {
+			opponentpictureadress = 1;
+		}else{
     		opponentpictureadress ++;
-    		}
-    		opponentimg.src = "image/opponent"+opponentpictureadress+".png";
-    		await ctx.drawImage(opponentimg,100,100,300,300);
+		}
+		opponentimg.src = "image/opponent"+opponentpictureadress+".png";
+		await ctx.drawImage(opponentimg,100,100,300,300);
     	//}
     	await sleep(1000);
     	await ctx.clearRect(90,90,310,310);
