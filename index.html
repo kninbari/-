@@ -16,10 +16,10 @@
 	<img id="image" src="image/player1.png" width="200" height="200">
 </div>
 <div id="label-container"></div>
-<canvas id="canvas" width="500" height="500"></canvas>
-<div class="opponenthand">
-	<img src="image/opponent1.png" style="display:none;" id="opponentimg">
-</div>
+//canvas id="canvas" width="500" height="500" canvas
+<div class="opponenthand" id="opponenthand">
+	
+</div>//img src="image/opponent1.png" style="display:none;" id="opponentimg"
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
@@ -96,26 +96,40 @@
 
     async function jankenstart(){
     	//ボタンが押されてじゃんけんがスタートしたら、今の手に対して負ける手を出す
-    	const canvas = document.getElementById("canvas");
-    	let ctx = canvas.getContext("2d");
-    	let opponentimg = document.getElementById("opponentimg");
+    	//const canvas = document.getElementById("canvas");
+    	//let ctx = canvas.getContext("2d");
+    	//let opponentimg = document.getElementById("opponentimg");
     	let opponentpictureadress = 0;
-    	//for (var i = 0; i >= 12; i++) {
+    	var opponenthand = document.getElementById('opponenthand');
+    	var opponentimg = opponenthand.createElement('img');
+    	opponentimg.setAttribute("id","opponentimg");
+    	opponenthand.appendChild(opponentimg);
+    	
+    	opponentimg.src = "image/opponent1.png";
+    	for (var i = 0; i <= 12; i++) {
     		//setTimeout(jankenrole,200);
     		
-    		ctx.clearRect(90,90,300,300);
-    		if (opponentpictureadress >=3) {
-    		opponentpictureadress = 1;
-    		}else{
+    		//ctx.clearRect(90,90,300,300);
+    		opponenthand.removeChild(opponentimg);
+    		opponentimg = opponenthand.createElement('img');
+    		opponentimg.setAttribute("id","opponentimg");
+
+
+
+
+    		opponentimg.src = "image/opponent"+(opponentpictureadress%3+1)+".png";
     		opponentpictureadress ++;
-    		}
-    		opponentimg.src = "image/opponent"+opponentpictureadress+".png";
+    		opponenthand.appendChild(opponentimg);
+
+
+
     		//opponentimg.onload = function{
-    			ctx.drawImage(opponentimg,100,100,200,200);
+    		//	ctx.drawImage(opponentimg,100,100,200,200);
     		//}
-    	//}
-    	await sleep(1000);
-    	ctx.clearRect(90,90,300,300);
+    		await sleep(1000);
+    	}
+    	
+    	//ctx.clearRect(90,90,300,300);
     	if (labelContainer.childNodes[0].innerHTML == "グー") {
     		opponentpictureadress = 2;
     	}else if (labelContainer.childNodes[0].innerHTML == "チョキ") {
@@ -125,7 +139,7 @@
     	}
     	opponentimg.src = "image/opponent"+opponentpictureadress+".png";
     	//opponentimg.onload = function{
-    		ctx.drawImage(opponentimg,100,100,200,200);
+    	//	ctx.drawImage(opponentimg,100,100,200,200);
     	//}
     }
 
