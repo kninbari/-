@@ -19,7 +19,7 @@
 <div class="playerhand">
 	<img id="image" src="image/player1.png" width="200" height="200">
 </div>
-<div id="label-container"></div>
+<p4><div id="label-container"></div></p4>
 //canvas id="canvas" width="500" height="500" canvas
 <div class="opponenthand" id="opponenthand">
 	
@@ -107,9 +107,11 @@
     	document.getElementById("dramrole").play();
     	var opponenthand = document.getElementById('opponenthand');
     	var opponentimg = document.createElement('img');
+
     	opponentimg.setAttribute("id","opponentimg");
     	opponenthand.appendChild(opponentimg);
-    	
+    	opponentimg.width = 200;
+    	opponentimg.heigh = 200;
     	opponentimg.src = "image/opponent1.png";
 
     	
@@ -120,6 +122,8 @@
     		//ctx.clearRect(90,90,300,300);
     		opponenthand.removeChild(opponentimg);
     		opponentimg = document.createElement('img');
+    		opponentimg.width = 200;
+    		opponentimg.heigh = 200;
     		opponentimg.setAttribute("id","opponentimg");
 
 
@@ -138,6 +142,8 @@
     	}
     	opponenthand.removeChild(opponentimg);
     	opponentimg = document.createElement('img');
+    	opponentimg.width = 200;
+   		opponentimg.heigh = 200;
     	opponentimg.setAttribute("id","opponentimg");
     	await sleep(300);
     	//ctx.clearRect(90,90,300,300);
