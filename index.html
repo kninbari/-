@@ -26,16 +26,7 @@
 </table>
 <div>　　　　　あなた　　　　　　　　　　相手</div>
 
-<div class="handplace" id="handplace"
-	style=" position: relative;
-  			margin: 50px;
-  			width: 1000px;
-  			height: 500px;">
-	
-</div>//style="top: 300px; left: 100px; width: 250px; height: 250px;"
 <div id="label-container"></div>
-//canvas id="canvas" width="500" height="500" canvas
-//img src="image/opponent1.png" style="display:none;" id="opponentimg"
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
@@ -94,9 +85,6 @@
         	}else if(prediction[2].probability > prediction[0].probability && prediction[2].probability > prediction[1].probability){
         		labelContainer.childNodes[0].innerHTML = "パー"
         	}
-            /*const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;*/
         }
     let img=document.getElementById("image");
     	let playerpictureadress;
@@ -112,9 +100,6 @@
 
     async function jankenstart(){
     	//ボタンが押されてじゃんけんがスタートしたら、今の手に対して負ける手を出す
-    	//const canvas = document.getElementById("canvas");
-    	//let ctx = canvas.getContext("2d");
-    	//let opponentimg = document.getElementById("opponentimg");
     	let opponentpictureadress = 0;
     	document.getElementById("dramrole").play();
     	var opponenthand = document.getElementById('opponenthand');
@@ -129,14 +114,10 @@
     	
     	
     	for (var i = 0; i <= 23; i++) {
-    		//setTimeout(jankenrole,200);
-    		
-    		//ctx.clearRect(90,90,300,300);
     		opponenthand.removeChild(opponentimg);
     		opponentimg = document.createElement('img');
     		opponentimg.width = 200;
     		opponentimg.heigh = 200;
-    		//opponentimg.style = "top: 300px; left: 400px; width: 250px; height: 250px;"
     		opponentimg.setAttribute("id","opponentimg");
 
 
@@ -148,19 +129,14 @@
 
 
 
-    		//opponentimg.onload = function{
-    		//	ctx.drawImage(opponentimg,100,100,200,200);
-    		//}
     		await sleep(100);
     	}
     	opponenthand.removeChild(opponentimg);
     	opponentimg = document.createElement('img');
     	opponentimg.width = 200;
    		opponentimg.heigh = 200;
-   		//opponentimg.style = "top: 300px; left: 400px; width: 250px; height: 250px;"
     	opponentimg.setAttribute("id","opponentimg");
     	await sleep(300);
-    	//ctx.clearRect(90,90,300,300);
     	if (labelContainer.childNodes[0].innerHTML == "グー") {
     		opponentpictureadress = 2;
     	}else if (labelContainer.childNodes[0].innerHTML == "チョキ") {
@@ -170,23 +146,8 @@
     	}
     	opponentimg.src = "image/opponent"+opponentpictureadress+".png";
     	opponenthand.appendChild(opponentimg);
-    	//opponentimg.onload = function{
-    	//	ctx.drawImage(opponentimg,100,100,200,200);
-    	//}
     }
 
-/*    async function jankenrole(){
-    	//let ctx = canvas.getContext("2d");
-    	//let opponentimg = document.getElementById("opponentimg");
-    	ctx.clearRect(90,90,310,310);
-    	if (opponentpictureadress >=3) {
-    		opponentpictureadress = 1;
-    	}else{
-    		opponentpictureadress ++;
-    	}
-    	opponentimg.src = "image/opponent"+opponentpictureadress+".png";
-    	ctx.drawImage(opponentimg,100,100,300,300);
-    }*/
 </script>
 
 </body>
